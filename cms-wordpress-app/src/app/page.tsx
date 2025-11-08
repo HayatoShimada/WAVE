@@ -41,12 +41,12 @@ export default function HomePage() {
           >
             Facebook
           </Link>
-          <Link 
+          <a 
             href="mailto:info@wa-ve.jp"
             className={styles.link}
           >
             Contact
-          </Link>
+          </a>
         </nav>
       </main>
 
