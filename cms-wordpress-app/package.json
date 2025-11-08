@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next dev",
-    "build": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next build",
+    "dev": "next dev",
+    "dev:wp": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next dev",
+    "build": "next build",
+    "build:wp": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next build",
     "start": "next start",
     "lint": "eslint .",
     "codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js"
