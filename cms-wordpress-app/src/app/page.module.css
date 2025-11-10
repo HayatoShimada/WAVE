@@ -70,7 +70,7 @@
   color: white;
   text-decoration: none;
   font-size: 10pt;
-  font-weight: normal;
+  font-weight: bold;
   border-radius: 4px;
   transition: color 0.3s ease;
 }
@@ -92,6 +92,9 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
+  .top {
+  }
 
   .center {
     gap: 148px;
