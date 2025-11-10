@@ -45,6 +45,3 @@
 ## 各種設定情報
 ▼ ドメイン
 wa-ve.jp
-▼ ムームードメインログイン情報
-my.atcq@gmail.com
-pass：tn@W@ikvP7avA-h
