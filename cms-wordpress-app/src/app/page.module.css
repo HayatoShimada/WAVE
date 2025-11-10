@@ -71,6 +71,7 @@
   text-decoration: none;
   font-size: 10pt;
   font-weight: bold;
+  letter-spacing: 0.05em;
   border-radius: 4px;
   transition: color 0.3s ease;
 }
@@ -87,6 +88,7 @@
 
 .copyright {
   font-size: 8pt;
+  letter-spacing: 0.05em;
   opacity: 0.8;
 }
 
