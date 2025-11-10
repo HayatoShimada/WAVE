@@ -88,14 +88,10 @@
 .copyright {
   font-size: 8pt;
   letter-spacing: 0.05em;
-  opacity: 0.8;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-
-  .top {
-  }
 
   .center {
     gap: 148px;
