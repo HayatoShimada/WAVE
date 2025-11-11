@@ -14,7 +14,7 @@ export default function HomePage() {
       {/* Center Section */}
       <main className={styles.center}>
         <div className={styles.logo}>
-          <img src="/wave_logo.svg" alt="WAVE" className={styles.logoImage} />
+          <img src="/wave_logo_2.svg" alt="WAVE" className={styles.logoImage} />
         </div>
         <nav className={styles.navigation}>
           <Link 
