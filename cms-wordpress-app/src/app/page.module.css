@@ -90,6 +90,33 @@
   letter-spacing: 0.05em;
 }
 
+/* Fade In Animation */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  clip-path: inset(100%);
+  pointer-events: none;
+}
+
+.fadeIn {
+  opacity: 0;
+  visibility: visible;
+  clip-path: inset(0%);
+  pointer-events: auto;
+  animation: fadeIn 3.0s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
 
