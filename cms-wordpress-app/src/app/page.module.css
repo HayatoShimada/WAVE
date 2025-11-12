@@ -45,18 +45,18 @@
 
 /* 背景画像が読み込まれたら繰り返しフェードイン・フェードアウト */
 .container.backgroundLoaded::before {
-  animation: breezeFade 6s ease-in-out infinite;
+  animation: breezeFade 4s ease-in-out infinite;
 }
 
 @keyframes breezeFade {
   0% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
   50% {
-    opacity: 1;
+    opacity: 1.0;
   }
   100% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 
