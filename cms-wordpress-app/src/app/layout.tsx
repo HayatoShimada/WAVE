@@ -21,6 +21,21 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
+      <head>
+        <link
+          rel="icon"
+          href="/icon_light.png"
+          media="(prefers-color-scheme: light)"
+          type="image/png"
+        />
+        
+        <link
+          rel="icon"
+          href="/icon_dark.png"
+          media="(prefers-color-scheme: dark)"
+          type="image/png"
+        />
+      </head>
       <body>
         {/* {isEnabled && <PreviewNotice />} */}
         {/* <Navigation /> */}
