@@ -39,7 +39,7 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 6s ease-in-out;
+  transition: opacity 3s ease-in-out;
   pointer-events: none;
   z-index: 0;
 }
