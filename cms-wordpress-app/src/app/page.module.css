@@ -14,7 +14,7 @@
 
 .container {
   min-height: 100vh;
-  background-color: #224ce0; /* 単色背景 */
+  background-color: #415ad9; /* 単色背景 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
