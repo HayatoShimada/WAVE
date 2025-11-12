@@ -111,7 +111,10 @@ export default function HomePage() {
   }
 
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div 
+      ref={containerRef} 
+      className={`${styles.container} ${isBackgroundLoaded ? styles.backgroundLoaded : ''}`}
+    >
       {/* Top Section */}
       <header ref={topRef} className={styles.top}>
         <div
