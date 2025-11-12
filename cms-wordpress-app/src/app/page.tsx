@@ -1,12 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import styles from "./page.module.css";
 
 export default function HomePage() {
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+
+  // 追加：要素参照 & CSS変数設定先
+  const containerRef = useRef<HTMLDivElement>(null);
+  const topRef = useRef<HTMLElement>(null);
+  const bottomRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const navRef  = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    // マウントされていない場合は実行しない
+    if (!isMounted || !containerRef.current) return;
+
+    // 追加：gap を計算して CSS 変数へ
+    const recalcGap = () => {
+      if (!containerRef.current) return;
+      const vh = window.innerHeight;     // 画面高さ
+      const topH = 51;
+      const bottomH = 43.5;
+      const logoH = 60;
+      const navH = 272;
+      const ratio = 148 / 636;           // 指定比率
+      const totalGap = (vh - (topH + bottomH + logoH + navH));
+      const gap = Math.max(24, totalGap * ratio); // 最小値24pxを確保
+
+      containerRef.current.style.setProperty("--dyn-gap", `${gap}px`);
+    };
+
+    // 即座に実行
+    recalcGap();
+
+    // リサイズとオリエンテーション変更のリスナーを追加
+    window.addEventListener("resize", recalcGap);
+    window.addEventListener("orientationchange", recalcGap);
+    
+    // 次のフレームでも実行（レイアウト確定後）
+    requestAnimationFrame(() => {
+      requestAnimationFrame(recalcGap);
+    });
+
+    return () => {
+      window.removeEventListener("resize", recalcGap);
+      window.removeEventListener("orientationchange", recalcGap);
+    };
+
+  }, [isMounted]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -24,6 +69,8 @@ export default function HomePage() {
         setIsBackgroundLoaded(true);
       });
     };
+
+  
   }, []);
 
   // マウントされるまで何も表示しない
@@ -32,20 +79,32 @@ export default function HomePage() {
   }
 
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       {/* Top Section */}
-      <header className={styles.top}>
-        <div className={`${styles.notice} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`} style={{ animationDelay: "2s" }}>
+      <header ref={topRef} className={styles.top}>
+        <div
+          className={`${styles.notice} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
+          style={{ animationDelay: "2s" }}
+        >
           COMING SOON
         </div>
       </header>
 
       {/* Center Section */}
       <main className={styles.center}>
-        <div className={`${styles.logo} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`} style={{ animationDelay: "0s" }}>
+        <div
+          ref={logoRef}
+          className={`${styles.logo} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
+          style={{ animationDelay: "0s" }}
+        >
           <img src="/wave_logo_2.svg" alt="WAVE" className={styles.logoImage} />
         </div>
-        <nav className={`${styles.navigation} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`} style={{ animationDelay: "1s" }}>
+
+        <nav
+          ref={navRef}
+          className={`${styles.navigation} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
+          style={{ animationDelay: "1s" }}
+        >
           <div className={styles.leftGroup}>
             <Link href="https://bio.site/halca_wave" target="_blank" rel="noopener noreferrer" className={styles.link}>
               HAL ca / Works
@@ -54,9 +113,7 @@ export default function HomePage() {
               Instagram
             </Link>
           </div>
-
           <div className={styles.centerSpacer} aria-hidden="true" />
-
           <div className={styles.rightGroup}>
             <Link href="https://www.facebook.com/wave.halca" target="_blank" rel="noopener noreferrer" className={styles.link}>
               Facebook
@@ -64,12 +121,14 @@ export default function HomePage() {
             <a href="mailto:info@wa-ve.jp" className={styles.link}>Contact</a>
           </div>
         </nav>
-
       </main>
 
       {/* Bottom Section */}
-      <footer className={styles.bottom}>
-        <div className={`${styles.copyright} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`} style={{ animationDelay: "3s" }}>
+      <footer ref={bottomRef} className={styles.bottom}>
+        <div
+          className={`${styles.copyright} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
+          style={{ animationDelay: "3s" }}
+        >
           © WA/VE 2025
         </div>
       </footer>
