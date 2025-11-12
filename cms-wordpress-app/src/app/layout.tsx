@@ -10,9 +10,7 @@ import "@/app/globals.css";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/icon.png",
-  },
+  // favicon.icoはappディレクトリに配置されているため、Next.jsが自動的に認識します
 };
 
 export default function RootLayout({
