@@ -14,7 +14,7 @@
 
 .container {
   min-height: 100vh;
-  background-color: #224ce0; /* 単色背景 */
+  background-color: #415ad9; /* 単色背景 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,14 +39,25 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 3s ease-in-out;
   pointer-events: none;
   z-index: 0;
 }
 
-/* 背景画像が読み込まれたらフェードイン */
+/* 背景画像が読み込まれたら繰り返しフェードイン・フェードアウト */
 .container.backgroundLoaded::before {
-  opacity: 1;
+  animation: breezeFade 6s ease-in-out infinite;
+}
+
+@keyframes breezeFade {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 /* コンテンツを前面に */
