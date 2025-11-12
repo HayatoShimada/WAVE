@@ -19,10 +19,26 @@ export default function HomePage() {
     // マウントされていない場合は実行しない
     if (!isMounted || !containerRef.current) return;
 
-    // 追加：gap を計算して CSS 変数へ
+    // 実際のビューポート高さを取得してCSS変数に設定（アドレスバーを考慮）
+    const setViewportHeight = () => {
+      // visualViewport APIが利用可能な場合はそれを使用（より正確）
+      const vh = window.visualViewport?.height || window.innerHeight;
+      const vhValue = `${vh}px`;
+      
+      // ルート要素にCSS変数を設定
+      document.documentElement.style.setProperty("--vh", vhValue);
+      
+      // containerにも設定（念のため）
+      if (containerRef.current) {
+        containerRef.current.style.setProperty("--vh", vhValue);
+      }
+    };
+
+    // gap を計算して CSS 変数へ
     const recalcGap = () => {
       if (!containerRef.current) return;
-      const vh = window.innerHeight;     // 画面高さ
+      // visualViewport APIが利用可能な場合はそれを使用
+      const vh = window.visualViewport?.height || window.innerHeight;
       const topH = 51;
       const bottomH = 43.5;
       const logoH = 60;
@@ -34,21 +50,37 @@ export default function HomePage() {
       containerRef.current.style.setProperty("--dyn-gap", `${gap}px`);
     };
 
+    // 両方の関数を実行
+    const updateAll = () => {
+      setViewportHeight();
+      recalcGap();
+    };
+
     // 即座に実行
-    recalcGap();
+    updateAll();
 
     // リサイズとオリエンテーション変更のリスナーを追加
-    window.addEventListener("resize", recalcGap);
-    window.addEventListener("orientationchange", recalcGap);
+    window.addEventListener("resize", updateAll);
+    window.addEventListener("orientationchange", updateAll);
+    
+    // visualViewport APIが利用可能な場合は、そのイベントも監視
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updateAll);
+      window.visualViewport.addEventListener("scroll", updateAll);
+    }
     
     // 次のフレームでも実行（レイアウト確定後）
     requestAnimationFrame(() => {
-      requestAnimationFrame(recalcGap);
+      requestAnimationFrame(updateAll);
     });
 
     return () => {
-      window.removeEventListener("resize", recalcGap);
-      window.removeEventListener("orientationchange", recalcGap);
+      window.removeEventListener("resize", updateAll);
+      window.removeEventListener("orientationchange", updateAll);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", updateAll);
+        window.visualViewport.removeEventListener("scroll", updateAll);
+      }
     };
 
   }, [isMounted]);

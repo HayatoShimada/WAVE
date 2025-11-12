@@ -162,13 +162,27 @@
     z-index: 10;
   }
 
-  /* 3) container は高さ固定しない（上下固定を避ける用の内側余白だけ確保） */
+  /* 3) container は実際のビューポート高さを使用してスクロールを防ぐ */
   .container {
+    /* 実際のビューポート高さをCSS変数から取得（JSで設定） */
+    height: var(--vh, 100svh);
+    min-height: var(--vh, 100svh);
+    /* svh非対応環境のフォールバック */
+    height: var(--vh, 100vh);
+    min-height: var(--vh, 100vh);
+    /* スクロールを防ぐ */
+    overflow: hidden;
     /* 既存 padding を活かす / 必要なら微調整 */
     padding-top: calc(19px + 32px); /* 19px + topの実高さ相当(例) */
     padding-bottom: calc(31.5px + 12px);
     align-items: center;  /* 左寄り防止 */
     text-align: center;
+    /* 位置固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
   }
 
   /* 4) center の gap を CSS変数から取得（JSで更新） */
