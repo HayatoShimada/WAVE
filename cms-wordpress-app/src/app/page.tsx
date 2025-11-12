@@ -46,37 +46,25 @@ export default function HomePage() {
           <img src="/wave_logo_2.svg" alt="WAVE" className={styles.logoImage} />
         </div>
         <nav className={`${styles.navigation} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`} style={{ animationDelay: "1s" }}>
-          <Link 
-            href="https://bio.site/halca_wave" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            HAL ca / Works
-          </Link>
-          <Link 
-            href="https://www.instagram.com/wa_ve.jp/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            Instagram
-          </Link>
-          <Link 
-            href="https://www.facebook.com/wave.halca" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            Facebook
-          </Link>
-          <a 
-            href="mailto:info@wa-ve.jp"
-            className={styles.link}
-          >
-            Contact
-          </a>
+          <div className={styles.leftGroup}>
+            <Link href="https://bio.site/halca_wave" target="_blank" rel="noopener noreferrer" className={styles.link}>
+              HAL ca / Works
+            </Link>
+            <Link href="https://www.instagram.com/wa_ve.jp/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+              Instagram
+            </Link>
+          </div>
+
+          <div className={styles.centerSpacer} aria-hidden="true" />
+
+          <div className={styles.rightGroup}>
+            <Link href="https://www.facebook.com/wave.halca" target="_blank" rel="noopener noreferrer" className={styles.link}>
+              Facebook
+            </Link>
+            <a href="mailto:info@wa-ve.jp" className={styles.link}>Contact</a>
+          </div>
         </nav>
+
       </main>
 
       {/* Bottom Section */}

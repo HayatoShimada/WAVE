@@ -49,20 +49,36 @@
   gap: 86px;
 }
 
-.logo {
-}
-
 .logoImage {
   height: 60px;
   width: auto;
   filter: brightness(0) invert(1); /* Makes logo white */
 }
 
+/* ナビ全体：中央のスペーサー列が常に画面中央に来る */
 .navigation {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 左 | 中央(スペーサー) | 右 */
+  align-items: center;
+  width: 100%;
+}
+
+/* 左右のリンクは各グループ内で gap を維持 */
+.leftGroup,
+.rightGroup {
   display: flex;
-  gap: 75px;
+  gap: 75px;               /* 既存の gap をそのまま維持 */
   flex-wrap: wrap;
-  justify-content: center;
+}
+
+/* 左右に寄せて、中央スペースの両側に並べる */
+.leftGroup  { justify-content: flex-end; }
+.rightGroup { justify-content: flex-start; }
+
+/* Instagram と Facebook の間の"空白を再現"するスペーサー */
+.centerSpacer {
+  width: 75px;             /* Instagram–Facebook 間の gap と同じ */
+  height: 1px;             /* 見えない細さでOK */
 }
 
 .link {
@@ -129,7 +145,17 @@
   }
   
   .navigation {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 54px;             /* 既存モバイルの見た目に合わせる */
+  }
+  .centerSpacer { display: none; }
+  .leftGroup, .rightGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 54px;
   }
   
