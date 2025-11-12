@@ -23,7 +23,7 @@ export default function RootLayout({
   // const { isEnabled } = draftMode();
 
   return (
-    <html lang="en">
+    <html lang="ja">
       <body>
         {/* {isEnabled && <PreviewNotice />} */}
         {/* <Navigation /> */}
