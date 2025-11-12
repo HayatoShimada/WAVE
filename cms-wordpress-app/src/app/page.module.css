@@ -125,6 +125,7 @@
 /* Bottom Section */
 .bottom {
   flex: 0 0 auto;
+  padding-bottom: 12px;
   height: 31.5px;
 }
 
@@ -144,7 +145,7 @@
   opacity: 0;
   visibility: visible;
   pointer-events: auto;
-  animation: fadeIn 3.0s ease-in-out forwards;
+  animation: fadeIn 1.0s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
@@ -236,5 +237,39 @@
   }
 
   .logoImage { height: 60px; }
-  .link { font-size: 16pt; }
+  .link { font-size: 14pt; }
+}
+
+/* モバイルかつビューポート高さが550px以下の時、navigationのgapを30pxに */
+@media (max-width: 768px) and (max-height: 550px) {
+
+}
+
+/* モバイルかつビューポート高さが低い場合、スクロールを許可 */
+@media (max-width: 768px) and (max-height: 500px) {
+  .container {
+    height: auto; /* 高さを自動に */
+    min-height: var(--vh, 100vh); /* 最小高さは維持 */
+  }
+  
+  /* centerのgapを小さくしてスペースを確保 */
+  .center {
+    gap: var(--dyn-gap, 20px);
+    min-height: auto;
+  }
+
+  .navigation {
+    gap: 20px;
+  }
+  
+  .leftGroup, .rightGroup {
+    gap: 15px;
+  }
+}
+
+/* デスクトップかつビューポート高さが400px以下の時、logoとnav間のgapを50pxに */
+@media (min-width: 769px) and (max-height: 400px) {
+  .center {
+    gap: 30px;
+  }
 }
