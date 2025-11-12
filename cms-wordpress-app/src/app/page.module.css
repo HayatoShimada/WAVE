@@ -137,7 +137,7 @@
 @media (max-width: 768px) {
 
   .center {
-    gap: 148px;
+    gap: auto;
   }
 
   .container {
@@ -164,7 +164,7 @@
   }
 
   .link {
-    font-size: 18pt;
+    font-size: 16pt;
   }
 
   .notice {
