@@ -278,18 +278,18 @@
 
   /* centerのgapを小さくしてスペースを確保 */
   .center {
-    gap: max(var(--dyn-gap, 20px), 20px); /* 最小20pxを保証 */
+    gap: max(var(--dyn-gap, 40px), 40px); /* 最小40pxを保証 */
     min-height: auto;
   }
 
   /* top（COMING SOON）とcenter（logo）の間にmin-gapを設定 */
   .top {
-    margin-bottom: max(20px, var(--top-gap, 20px)); /* 最小20px */
+    margin-bottom: max(40px, var(--top-gap, 40px)); /* 最小40px */
   }
 
   /* bottom（コピーライト）とnavの間にmin-gapを設定 */
   .bottom {
-    margin-top: max(20px, var(--bottom-gap, 20px)); /* 最小20px */
+    margin-top: max(40px, var(--bottom-gap, 40px)); /* 最小40px */
   }
 
   .navigation {
@@ -304,16 +304,16 @@
 /* デスクトップかつビューポート高さが400px以下の時、logoとnav間のgapを50pxに */
 @media (min-width: 769px) and (max-height: 400px) {
   .center {
-    gap: max(30px, var(--dyn-gap, 30px)); /* 最小30pxを保証 */
+    gap: max(40px, var(--dyn-gap, 40px)); /* 最小40pxを保証 */
   }
 
   /* top（COMING SOON）とcenter（logo）の間にmin-gapを設定 */
   .top {
-    margin-bottom: max(20px, var(--top-gap, 20px)); /* 最小20px */
+    margin-bottom: max(40px, var(--top-gap, 40px)); /* 最小40px */
   }
 
   /* bottom（コピーライト）とcenter（nav）の間にmin-gapを設定 */
   .bottom {
-    margin-top: max(20px, var(--bottom-gap, 20px)); /* 最小20px */
+    margin-top: max(40px, var(--bottom-gap, 40px)); /* 最小40px */
   }
 }
