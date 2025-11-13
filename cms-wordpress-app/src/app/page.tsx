@@ -119,7 +119,7 @@ export default function HomePage() {
       <header ref={topRef} className={styles.top}>
         <div
           className={`${styles.notice} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
-          style={{ animationDelay: "1.4s" }}
+          style={{ animationDelay: "0.8s" }}
         >
           COMING SOON
         </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
         <nav
           ref={navRef}
           className={`${styles.navigation} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
-          style={{ animationDelay: "0.7s" }}
+          style={{ animationDelay: "0.4s" }}
         >
           <div className={styles.leftGroup}>
             <Link href="https://bio.site/halca_wave" target="_blank" rel="noopener noreferrer" className={styles.link}>
@@ -162,7 +162,7 @@ export default function HomePage() {
       <footer ref={bottomRef} className={styles.bottom}>
         <div
           className={`${styles.copyright} ${isBackgroundLoaded ? styles.fadeIn : styles.hidden}`}
-          style={{ animationDelay: "2.1s" }}
+          style={{ animationDelay: "1.2s" }}
         >
           © WA/VE 2025
         </div>
