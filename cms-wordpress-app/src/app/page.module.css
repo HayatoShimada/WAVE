@@ -248,20 +248,54 @@
 /* モバイルかつビューポート高さが低い場合、スクロールを許可 */
 @media (max-width: 768px) and (max-height: 500px) {
   .container {
+    position: relative; /* fixedを解除 */
     height: auto; /* 高さを自動に */
-    min-height: var(--vh, 100vh); /* 最小高さは維持 */
+    min-height: 100vh; /* 最小高さは維持 */
+    overflow: auto; /* スクロールを許可 */
+    padding-top: 19px; /* 元の padding に戻す */
+    padding-bottom: 19px;
   }
-  
+
+  /* top要素もfixedを解除して通常フローに */
+  .top {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+  }
+
+  /* bottom要素もfixedを解除して通常フローに */
+  .bottom {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    padding-bottom: 0;
+    height: 12.5px;
+  }
+
   /* centerのgapを小さくしてスペースを確保 */
   .center {
-    gap: var(--dyn-gap, 20px);
+    gap: max(var(--dyn-gap, 20px), 20px); /* 最小20pxを保証 */
     min-height: auto;
+  }
+
+  /* top（COMING SOON）とcenter（logo）の間にmin-gapを設定 */
+  .top {
+    margin-bottom: max(20px, var(--top-gap, 20px)); /* 最小20px */
+  }
+
+  /* bottom（コピーライト）とnavの間にmin-gapを設定 */
+  .bottom {
+    margin-top: max(20px, var(--bottom-gap, 20px)); /* 最小20px */
   }
 
   .navigation {
     gap: 20px;
   }
-  
+
   .leftGroup, .rightGroup {
     gap: 15px;
   }
@@ -270,6 +304,16 @@
 /* デスクトップかつビューポート高さが400px以下の時、logoとnav間のgapを50pxに */
 @media (min-width: 769px) and (max-height: 400px) {
   .center {
-    gap: 30px;
+    gap: max(30px, var(--dyn-gap, 30px)); /* 最小30pxを保証 */
+  }
+
+  /* top（COMING SOON）とcenter（logo）の間にmin-gapを設定 */
+  .top {
+    margin-bottom: max(20px, var(--top-gap, 20px)); /* 最小20px */
+  }
+
+  /* bottom（コピーライト）とcenter（nav）の間にmin-gapを設定 */
+  .bottom {
+    margin-top: max(20px, var(--bottom-gap, 20px)); /* 最小20px */
   }
 }
